@@ -1,3 +1,4 @@
+# Ansible Apt documentation: https://docs.ansible.com/ansible/2.3/apt_module.html
 ---
 - name: "update apt packages."
   become: yes
@@ -7,8 +8,7 @@
 - name: "upgrade packages"
   become: yes
   apt:
-    upgrade: yes
-
+    upgrade: "yes"
 
 - name: remove dependencies that are no longer required
   become: yes

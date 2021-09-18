@@ -144,3 +144,8 @@ Files relevant for this exercise are:
 └── .circleci
     └── config.yml
 ```
+
+## Notes
+
+- If you are targeting your localhost for ansible playbook.  You will need to use sudo for the command.
+- In bash, to append to the end of file use `>>` operator.

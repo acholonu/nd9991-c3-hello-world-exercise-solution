@@ -43,6 +43,26 @@ jobs:
       - run: echo HELLO
       - run: echo WORLD
       - run: echo $_env_name
+  # Exercise: Remote - Ugochi
+  create_inventory_file:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run: 
+          name: initial inventory file
+          command: |
+            echo "[all]" > ~/inventory.txt
+            aws ec2 describe-instances \
+              \
+              --profile 
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Project,Values=application" \ #Where you have a tag name Project on the ec2 instance, and the value is set to application 
+              --output text >> inventory.txt 
+      - persist_to_workspace:
+          root: ~/
+          paths: 
+            - inventory.txt
 
   # Exercise: Sharing Files (Job names may have changed)
   upload_file:
